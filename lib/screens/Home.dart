@@ -103,9 +103,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<MyUser>(
-      stream: AuthService().myUser,
-      builder: (context, snapshot) {
+    
         return SafeArea(
           child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -155,17 +153,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ),
                   iconSize: 24 * ScreenSize.heightMultiplyingFactor,
                   onPressed: () {
-//                Navigator.push(
-//                  context,
-//                  MaterialPageRoute(builder: (context) => SearchScreen()),
-//                );
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => LoginScreen()),
-                    // );
                     
-                    
-                 AuthService().signOutGoogle();
+                    authService.signOutGoogle();
 
                   },
                 )
@@ -184,7 +173,5 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                   ),
           ),
         );
-      }
-    );
   }
 }

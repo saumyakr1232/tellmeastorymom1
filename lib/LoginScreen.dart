@@ -12,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  bool _loading = false;
   bool _isHidden = true;
   final _formKey = GlobalKey<FormState>();
   String email;
@@ -30,6 +31,13 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isHidden = !_isHidden;
     });
+  }
+
+  @override
+  void initState() { 
+    super.initState();
+    // Subscription are created here
+    authService.loading.listen((state)=> setState(() => _loading = state));
   }
 
   @override

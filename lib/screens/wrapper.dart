@@ -21,20 +21,15 @@ class Wrapper extends StatelessWidget {
 
 
     // return either Home or Authenticate Widget
-    return  StreamBuilder<MyUser>(
-      stream: AuthService().myUser,
-      builder: (context, snapshot) {
-        if(snapshot.hasData){
-          if(snapshot.data == null){
-            print("Null user");
-            return LoginScreen();
-          }else{
-            print(snapshot.data.uid);
-            return Home();
-          }
-        }
-        
+    return  StreamBuilder(
+      stream: authService.user,
+      builder: (context, snapshot){
+      if(snapshot.hasData){
+        return Home();
+      }else{
+        return LoginScreen();
       }
-    );
+    });
+    
   }
 }
